@@ -51,6 +51,7 @@ class ProductImage extends ProductImageBase implements ArrayAccess
         'url_standard' => 'string',
         'url_thumbnail' => 'string',
         'url_tiny' => 'string',
+        'image_url' => 'string',
         'date_modified' => '\DateTime'
     ];
 
@@ -70,6 +71,7 @@ class ProductImage extends ProductImageBase implements ArrayAccess
         'id' => 'id',
         'product_id' => 'product_id',
         'image_file' => 'image_file',
+        'image_url' => 'image_url',
         'url_zoom' => 'url_zoom',
         'url_standard' => 'url_standard',
         'url_thumbnail' => 'url_thumbnail',
@@ -92,7 +94,8 @@ class ProductImage extends ProductImageBase implements ArrayAccess
         'url_standard' => 'setUrlStandard',
         'url_thumbnail' => 'setUrlThumbnail',
         'url_tiny' => 'setUrlTiny',
-        'date_modified' => 'setDateModified'
+        'date_modified' => 'setDateModified',
+        'image_url' => 'setImageUrl'
     ];
 
     /**
@@ -110,7 +113,8 @@ class ProductImage extends ProductImageBase implements ArrayAccess
         'url_standard' => 'getUrlStandard',
         'url_thumbnail' => 'getUrlThumbnail',
         'url_tiny' => 'getUrlTiny',
-        'date_modified' => 'getDateModified'
+        'date_modified' => 'getDateModified',
+        'imageUrl' => 'getImageUrl'
     ];
 
     public static function attributeMap()
@@ -150,6 +154,7 @@ class ProductImage extends ProductImageBase implements ArrayAccess
         $this->container['id'] = array_key_exists('id', $data) ? $data['id'] : null;
         $this->container['product_id'] = array_key_exists('product_id', $data) ? $data['product_id'] : null;
         $this->container['image_file'] = array_key_exists('image_file', $data) ? $data['image_file'] : null;
+        $this->container['image_url'] = array_key_exists('image_url', $data) ? $data['image_url'] : null;
         $this->container['url_zoom'] = array_key_exists('url_zoom', $data) ? $data['url_zoom'] : null;
         $this->container['url_standard'] = array_key_exists('url_standard', $data) ? $data['url_standard'] : null;
         $this->container['url_thumbnail'] = array_key_exists('url_thumbnail', $data) ? $data['url_thumbnail'] : null;
@@ -438,6 +443,19 @@ class ProductImage extends ProductImageBase implements ArrayAccess
 
         return $this;
     }
+
+    public function setImageUrl($imageUrl)
+    {
+        $this->container['image_url'] = $imageUrl;
+
+        return $this;
+    }
+
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset
